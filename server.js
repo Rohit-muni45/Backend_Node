@@ -116,7 +116,6 @@ app.get('/profile', authenticate, async (req, res) => {
 app.get("/api/employees", async (req, res) => {
   try {
     const employees = await Employee.find();
-    console.log("Employess...",employees);
     res.json({ success: true, data: employees });
   } catch (err) {
     console.error(err);
