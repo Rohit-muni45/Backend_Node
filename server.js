@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
 const User = require('./models/User');
 const Employee = require('./models/Employees.js');
+const cors = require('cors')
 
 dotenv.config();
 const app = express();
@@ -113,7 +114,7 @@ app.get('/profile', authenticate, async (req, res) => {
 });
 
 // GET API to fetch all employees
-app.get("/api/employees", async (req, res) => {
+app.get("/api/employees", cors(), async (req, res) => {
   try {
     const employees = await Employee.find();
     res.json({ success: true, data: employees });
